@@ -1,0 +1,1513 @@
+/* =====================================================
+   CONTACT PAGE
+   TEAM PORTFOLIO
+===================================================== */
+
+
+/* =====================================================
+   PAGE
+===================================================== */
+
+.contact-page {
+
+    position: relative;
+
+    min-height: calc(100vh - 80px);
+
+    overflow: hidden;
+
+    padding: 90px 24px 120px;
+
+    background: var(--plum);
+
+}
+
+
+.contact-background-grid {
+
+    position: absolute;
+
+    inset: 0;
+
+    pointer-events: none;
+
+    opacity: 0.18;
+
+    background-image:
+        linear-gradient(
+            rgba(217, 239, 189, 0.08) 1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            90deg,
+            rgba(217, 239, 189, 0.08) 1px,
+            transparent 1px
+        );
+
+    background-size: 70px 70px;
+
+}
+
+
+.contact-background-grid::after {
+
+    content: "";
+
+    position: absolute;
+
+    width: 700px;
+
+    height: 700px;
+
+    top: -300px;
+
+    right: -250px;
+
+    border-radius: 50%;
+
+    background: var(--green);
+
+    opacity: 0.08;
+
+    filter: blur(100px);
+
+}
+
+
+
+/* =====================================================
+   CONTAINER
+===================================================== */
+
+.contact-container {
+
+    position: relative;
+
+    z-index: 2;
+
+    width: min(1240px, 100%);
+
+    margin: 0 auto;
+
+    display: grid;
+
+    grid-template-columns: minmax(320px, 0.8fr) minmax(500px, 1.2fr);
+
+    gap: 90px;
+
+    align-items: start;
+
+}
+
+
+
+/* =====================================================
+   LEFT INTRO
+===================================================== */
+
+.contact-intro {
+
+    position: sticky;
+
+    top: 120px;
+
+}
+
+
+.contact-eyebrow {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    font-family: var(--mono);
+
+    font-size: 11px;
+
+    font-weight: 500;
+
+    letter-spacing: 2.5px;
+
+    color: var(--green);
+
+}
+
+
+.eyebrow-line {
+
+    display: block;
+
+    width: 34px;
+
+    height: 2px;
+
+    background: var(--green);
+
+}
+
+
+.contact-intro h1 {
+
+    margin: 25px 0 25px;
+
+    max-width: 650px;
+
+    font-size: clamp(52px, 6vw, 82px);
+
+    line-height: 0.96;
+
+    letter-spacing: -5px;
+
+    color: var(--cream);
+
+}
+
+
+.contact-intro h1 span {
+
+    display: block;
+
+    color: var(--green);
+
+}
+
+
+.contact-description {
+
+    max-width: 510px;
+
+    margin: 0;
+
+    color: rgba(245, 251, 218, 0.68);
+
+    font-size: 16px;
+
+    line-height: 1.8;
+
+}
+
+
+
+/* =====================================================
+   CONTACT POINTS
+===================================================== */
+
+.contact-points {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 25px;
+
+    margin-top: 55px;
+
+}
+
+
+.contact-point {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 16px;
+
+}
+
+
+.point-icon {
+
+    width: 46px;
+
+    height: 46px;
+
+    flex-shrink: 0;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border: 1px solid rgba(185, 209, 117, 0.25);
+
+    border-radius: 12px;
+
+    color: var(--green);
+
+    background: rgba(185, 209, 117, 0.06);
+
+}
+
+
+.point-content {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 5px;
+
+}
+
+
+.point-label {
+
+    font-family: var(--mono);
+
+    font-size: 9px;
+
+    letter-spacing: 1.5px;
+
+    color: rgba(245, 251, 218, 0.4);
+
+}
+
+
+.point-content strong {
+
+    color: var(--cream);
+
+    font-size: 13px;
+
+    font-weight: 600;
+
+    line-height: 1.5;
+
+}
+
+
+
+/* =====================================================
+   PRIVACY NOTE
+===================================================== */
+
+.contact-note {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    margin-top: 45px;
+
+    padding-top: 25px;
+
+    border-top: 1px solid rgba(245, 251, 218, 0.1);
+
+    color: rgba(245, 251, 218, 0.4);
+
+    font-size: 11px;
+
+    line-height: 1.6;
+
+}
+
+
+.contact-note i {
+
+    color: var(--green);
+
+}
+
+
+
+/* =====================================================
+   FORM WRAPPER
+===================================================== */
+
+.contact-form-wrapper {
+
+    background: var(--cream);
+
+    border: 1px solid rgba(255, 255, 255, 0.2);
+
+    border-radius: 20px;
+
+    padding: 42px;
+
+    box-shadow:
+        0 35px 100px rgba(0, 0, 0, 0.28);
+
+}
+
+
+
+/* =====================================================
+   FORM TOP
+===================================================== */
+
+.form-top {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    margin-bottom: 35px;
+
+    padding-bottom: 20px;
+
+    border-bottom: 1px solid rgba(69, 12, 63, 0.1);
+
+}
+
+
+.form-top > div:first-child {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+}
+
+
+.form-number {
+
+    font-family: var(--mono);
+
+    font-size: 10px;
+
+    color: var(--green);
+
+    background: var(--plum);
+
+    padding: 5px 7px;
+
+    border-radius: 5px;
+
+}
+
+
+.form-section-label {
+
+    font-family: var(--mono);
+
+    font-size: 10px;
+
+    letter-spacing: 1.8px;
+
+    color: var(--plum);
+
+}
+
+
+.required-note {
+
+    color: #888;
+
+    font-size: 10px;
+
+}
+
+
+
+/* =====================================================
+   FORM SECTION
+===================================================== */
+
+.form-section {
+
+    margin-bottom: 42px;
+
+}
+
+
+.section-title {
+
+    display: flex;
+
+    align-items: flex-start;
+
+    gap: 14px;
+
+    margin-bottom: 25px;
+
+}
+
+
+.section-index {
+
+    font-family: var(--mono);
+
+    font-size: 10px;
+
+    color: #999;
+
+    padding-top: 5px;
+
+}
+
+
+.section-title h2 {
+
+    margin: 0 0 4px;
+
+    color: var(--plum);
+
+    font-size: 21px;
+
+    line-height: 1.2;
+
+    letter-spacing: -0.5px;
+
+}
+
+
+.section-title p {
+
+    margin: 0;
+
+    color: #85817a;
+
+    font-size: 12px;
+
+    line-height: 1.5;
+
+}
+
+
+
+/* =====================================================
+   FORM GRID
+===================================================== */
+
+.form-grid {
+
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 18px;
+
+}
+
+
+
+/* =====================================================
+   FORM GROUP
+===================================================== */
+
+.form-group {
+
+    margin-bottom: 20px;
+
+}
+
+
+.form-group > label {
+
+    display: block;
+
+    margin-bottom: 8px;
+
+    color: var(--plum);
+
+    font-size: 12px;
+
+    font-weight: 700;
+
+}
+
+
+.form-group > label span {
+
+    color: #a80000;
+
+}
+
+
+
+/* =====================================================
+   INPUT
+===================================================== */
+
+.input-wrapper {
+
+    position: relative;
+
+}
+
+
+.input-wrapper > i {
+
+    position: absolute;
+
+    left: 15px;
+
+    top: 50%;
+
+    transform: translateY(-50%);
+
+    color: #aaa;
+
+    font-size: 13px;
+
+    pointer-events: none;
+
+    transition: color 0.2s ease;
+
+}
+
+
+.input-wrapper input {
+
+    width: 100%;
+
+    height: 48px;
+
+    box-sizing: border-box;
+
+    padding: 0 15px 0 42px;
+
+    border: 1px solid rgba(69, 12, 63, 0.14);
+
+    border-radius: 9px;
+
+    outline: none;
+
+    background: #fff;
+
+    color: var(--plum);
+
+    font-family: var(--sans);
+
+    font-size: 13px;
+
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+
+}
+
+
+.input-wrapper input::placeholder {
+
+    color: #aaa;
+
+}
+
+
+.input-wrapper:focus-within > i {
+
+    color: var(--plum);
+
+}
+
+
+.input-wrapper:focus-within input {
+
+    border-color: var(--plum);
+
+    box-shadow:
+        0 0 0 3px rgba(69, 12, 63, 0.07);
+
+}
+
+
+
+/* =====================================================
+   SELECT
+===================================================== */
+
+.select-wrapper {
+
+    position: relative;
+
+}
+
+
+.select-wrapper > i:first-child {
+
+    position: absolute;
+
+    left: 15px;
+
+    top: 50%;
+
+    transform: translateY(-50%);
+
+    z-index: 2;
+
+    color: #aaa;
+
+    font-size: 13px;
+
+    pointer-events: none;
+
+}
+
+
+.select-wrapper select {
+
+    width: 100%;
+
+    height: 48px;
+
+    box-sizing: border-box;
+
+    padding: 0 42px;
+
+    border: 1px solid rgba(69, 12, 63, 0.14);
+
+    border-radius: 9px;
+
+    outline: none;
+
+    appearance: none;
+
+    background: #fff;
+
+    color: var(--plum);
+
+    font-family: var(--sans);
+
+    font-size: 13px;
+
+    cursor: pointer;
+
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+
+}
+
+
+.select-wrapper select:focus {
+
+    border-color: var(--plum);
+
+    box-shadow:
+        0 0 0 3px rgba(69, 12, 63, 0.07);
+
+}
+
+
+.select-arrow {
+
+    position: absolute;
+
+    right: 15px;
+
+    top: 50%;
+
+    transform: translateY(-50%);
+
+    color: #999;
+
+    font-size: 10px;
+
+    pointer-events: none;
+
+}
+
+
+
+/* =====================================================
+   BUDGET
+===================================================== */
+
+.budget-options {
+
+    display: grid;
+
+    grid-template-columns: repeat(4, 1fr);
+
+    gap: 8px;
+
+}
+
+
+.budget-option {
+
+    position: relative;
+
+    cursor: pointer;
+
+}
+
+
+.budget-option input {
+
+    position: absolute;
+
+    opacity: 0;
+
+    pointer-events: none;
+
+}
+
+
+.budget-option span {
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    min-height: 64px;
+
+    box-sizing: border-box;
+
+    padding: 10px 7px;
+
+    text-align: center;
+
+    border: 1px solid rgba(69, 12, 63, 0.13);
+
+    border-radius: 9px;
+
+    background: #fff;
+
+    color: var(--plum);
+
+    transition:
+        background 0.2s ease,
+        border-color 0.2s ease,
+        transform 0.2s ease;
+
+}
+
+
+.budget-option span strong {
+
+    font-size: 11px;
+
+    line-height: 1.3;
+
+}
+
+
+.budget-option span small {
+
+    margin-top: 3px;
+
+    color: #999;
+
+    font-size: 9px;
+
+}
+
+
+.budget-option:hover span {
+
+    border-color: rgba(69, 12, 63, 0.35);
+
+    transform: translateY(-1px);
+
+}
+
+
+.budget-option input:checked + span {
+
+    border-color: var(--plum);
+
+    background: var(--plum);
+
+    color: var(--cream);
+
+}
+
+
+.budget-option input:checked + span small {
+
+    color: rgba(245, 251, 218, 0.55);
+
+}
+
+
+
+/* =====================================================
+   TEXTAREA
+===================================================== */
+
+.textarea-wrapper {
+
+    position: relative;
+
+}
+
+
+.textarea-wrapper textarea {
+
+    display: block;
+
+    width: 100%;
+
+    min-height: 175px;
+
+    box-sizing: border-box;
+
+    padding: 15px;
+
+    border: 1px solid rgba(69, 12, 63, 0.14);
+
+    border-radius: 9px;
+
+    outline: none;
+
+    resize: vertical;
+
+    background: #fff;
+
+    color: var(--plum);
+
+    font-family: var(--sans);
+
+    font-size: 13px;
+
+    line-height: 1.7;
+
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+
+}
+
+
+.textarea-wrapper textarea::placeholder {
+
+    color: #aaa;
+
+}
+
+
+.textarea-wrapper textarea:focus {
+
+    border-color: var(--plum);
+
+    box-shadow:
+        0 0 0 3px rgba(69, 12, 63, 0.07);
+
+}
+
+
+.textarea-bottom {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    margin-top: 6px;
+
+    color: #999;
+
+    font-family: var(--mono);
+
+    font-size: 9px;
+
+}
+
+
+.textarea-bottom strong {
+
+    color: var(--plum);
+
+}
+
+
+
+/* =====================================================
+   ERROR
+===================================================== */
+
+.form-error {
+
+    display: none;
+
+    align-items: center;
+
+    gap: 10px;
+
+    margin-bottom: 18px;
+
+    padding: 13px 15px;
+
+    border: 1px solid rgba(170, 0, 0, 0.15);
+
+    border-radius: 9px;
+
+    background: #fff0f0;
+
+    color: #a00000;
+
+    font-size: 12px;
+
+    line-height: 1.5;
+
+}
+
+
+.form-error.show {
+
+    display: flex;
+
+}
+
+
+.form-error i {
+
+    flex-shrink: 0;
+
+}
+
+
+
+/* =====================================================
+   SUBMIT BUTTON
+===================================================== */
+
+.submit-project-btn {
+
+    position: relative;
+
+    width: 100%;
+
+    min-height: 55px;
+
+    padding: 0 20px;
+
+    border: 0;
+
+    border-radius: 9px;
+
+    outline: none;
+
+    background: var(--plum);
+
+    color: var(--cream);
+
+    cursor: pointer;
+
+    font-family: var(--mono);
+
+    font-size: 11px;
+
+    font-weight: 500;
+
+    letter-spacing: 1.5px;
+
+    overflow: hidden;
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        opacity 0.2s ease;
+
+}
+
+
+.submit-project-btn::before {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    background: var(--green);
+
+    transform: translateX(-101%);
+
+    transition: transform 0.35s ease;
+
+}
+
+
+.submit-project-btn:hover::before {
+
+    transform: translateX(0);
+
+}
+
+
+.submit-project-btn:hover {
+
+    color: var(--plum);
+
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 12px 30px rgba(69, 12, 63, 0.2);
+
+}
+
+
+.submit-content,
+.submit-loading {
+
+    position: relative;
+
+    z-index: 2;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    width: 100%;
+
+    gap: 15px;
+
+}
+
+
+.submit-loading {
+
+    display: none;
+
+    justify-content: center;
+
+}
+
+
+.submit-project-btn.loading .submit-content {
+
+    display: none;
+
+}
+
+
+.submit-project-btn.loading .submit-loading {
+
+    display: flex;
+
+}
+
+
+.submit-project-btn:disabled {
+
+    cursor: wait;
+
+    opacity: 0.7;
+
+    transform: none;
+
+}
+
+
+
+/* =====================================================
+   SUCCESS
+===================================================== */
+
+.form-success {
+
+    display: none;
+
+    align-items: center;
+
+    gap: 14px;
+
+    margin-top: 20px;
+
+    padding: 18px;
+
+    border: 1px solid rgba(69, 12, 63, 0.08);
+
+    border-radius: 11px;
+
+    background: var(--light-green);
+
+    color: var(--plum);
+
+    animation: successAppear 0.35s ease;
+
+}
+
+
+.form-success.show {
+
+    display: flex;
+
+}
+
+
+@keyframes successAppear {
+
+    from {
+
+        opacity: 0;
+
+        transform: translateY(10px);
+
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform: translateY(0);
+
+    }
+
+}
+
+
+.success-icon {
+
+    width: 42px;
+
+    height: 42px;
+
+    flex-shrink: 0;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: var(--green);
+
+    color: var(--plum);
+
+}
+
+
+.success-content strong {
+
+    display: block;
+
+    margin-bottom: 4px;
+
+    font-size: 13px;
+
+}
+
+
+.success-content p {
+
+    margin: 0;
+
+    color: rgba(69, 12, 63, 0.7);
+
+    font-size: 11px;
+
+    line-height: 1.6;
+
+}
+
+
+
+/* =====================================================
+   RESPONSIVE — TABLET
+===================================================== */
+
+@media (max-width: 1050px) {
+
+    .contact-container {
+
+        grid-template-columns: 1fr;
+
+        gap: 55px;
+
+    }
+
+
+    .contact-intro {
+
+        position: static;
+
+    }
+
+
+    .contact-intro h1 {
+
+        max-width: 700px;
+
+    }
+
+
+    .contact-description {
+
+        max-width: 700px;
+
+    }
+
+
+    .contact-points {
+
+        display: grid;
+
+        grid-template-columns: repeat(3, 1fr);
+
+        gap: 20px;
+
+    }
+
+
+    .contact-note {
+
+        max-width: 500px;
+
+    }
+
+}
+
+
+
+/* =====================================================
+   RESPONSIVE — SMALL TABLET
+===================================================== */
+
+@media (max-width: 750px) {
+
+    .contact-page {
+
+        padding: 65px 18px 90px;
+
+    }
+
+
+    .contact-container {
+
+        gap: 40px;
+
+    }
+
+
+    .contact-intro h1 {
+
+        font-size: clamp(45px, 11vw, 65px);
+
+        letter-spacing: -3.5px;
+
+    }
+
+
+    .contact-points {
+
+        grid-template-columns: 1fr;
+
+        gap: 18px;
+
+    }
+
+
+    .contact-form-wrapper {
+
+        padding: 30px 24px;
+
+    }
+
+
+    .form-grid {
+
+        grid-template-columns: 1fr;
+
+        gap: 0;
+
+    }
+
+
+    .budget-options {
+
+        grid-template-columns: repeat(2, 1fr);
+
+    }
+
+}
+
+
+
+/* =====================================================
+   RESPONSIVE — MOBILE
+===================================================== */
+
+@media (max-width: 520px) {
+
+    .contact-page {
+
+        padding: 50px 14px 70px;
+
+    }
+
+
+    .contact-intro h1 {
+
+        font-size: 45px;
+
+        letter-spacing: -2.8px;
+
+    }
+
+
+    .contact-description {
+
+        font-size: 14px;
+
+    }
+
+
+    .contact-form-wrapper {
+
+        padding: 24px 18px;
+
+        border-radius: 15px;
+
+    }
+
+
+    .form-top {
+
+        margin-bottom: 28px;
+
+    }
+
+
+    .form-section {
+
+        margin-bottom: 35px;
+
+    }
+
+
+    .section-title h2 {
+
+        font-size: 19px;
+
+    }
+
+
+    .section-title p {
+
+        font-size: 11px;
+
+    }
+
+
+    .budget-options {
+
+        grid-template-columns: 1fr 1fr;
+
+    }
+
+
+    .budget-option span {
+
+        min-height: 60px;
+
+    }
+
+
+    .budget-option span strong {
+
+        font-size: 10px;
+
+    }
+
+
+    .budget-option span small {
+
+        font-size: 8px;
+
+    }
+
+
+    .textarea-wrapper textarea {
+
+        min-height: 190px;
+
+    }
+
+
+    .textarea-bottom {
+
+        font-size: 8px;
+
+    }
+
+}
+
+
+
+/* =====================================================
+   ACCESSIBILITY
+===================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+
+        animation-duration: 0.01ms !important;
+
+        animation-iteration-count: 1 !important;
+
+        transition-duration: 0.01ms !important;
+
+    }
+
+}
+
+/* =====================================================
+   HONEYPOT (hidden from real users, traps bots)
+===================================================== */
+
+.hp-field {
+
+    position: absolute;
+
+    left: -9999px;
+
+    top: -9999px;
+
+    opacity: 0;
+
+    pointer-events: none;
+
+}
+
+
+/* =====================================================
+   INLINE FIELD ERRORS
+===================================================== */
+
+.field-error {
+
+    display: block;
+
+    min-height: 16px;
+
+    margin-top: 6px;
+
+    color: #a00000;
+
+    font-size: 11px;
+
+    line-height: 1.4;
+
+}
+
+
+.form-group.has-error .input-wrapper input,
+.form-group.has-error .select-wrapper select,
+.form-group.has-error .textarea-wrapper textarea {
+
+    border-color: #a00000;
+
+    box-shadow:
+        0 0 0 3px rgba(170, 0, 0, 0.08);
+
+}
+
+
+.form-group.has-error .input-wrapper > i,
+.form-group.has-error .select-wrapper > i:first-child {
+
+    color: #a00000;
+
+}
