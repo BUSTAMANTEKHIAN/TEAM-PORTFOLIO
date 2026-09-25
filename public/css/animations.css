@@ -1,0 +1,31 @@
+.hero-glow {
+  position: fixed;
+  width: 280px;
+  height: 280px;
+  pointer-events: none;
+  z-index: 0;
+  border-radius: 50%;
+  background: radial-gradient(circle, var(--glow), transparent 68%);
+  transform: translate(-50%, -50%);
+  opacity: 0.55;
+}
+
+html[data-motion="reduced"] .hero-glow,
+html[data-motion="reduced"] .cursor-dot,
+html[data-motion="reduced"] .cursor-ring {
+  display: none !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html:not([data-motion="full"]) .hero-glow,
+  html:not([data-motion="full"]) .cursor-dot,
+  html:not([data-motion="full"]) .cursor-ring {
+    display: none !important;
+  }
+
+  html:not([data-motion="full"]) .project-card:hover,
+  html:not([data-motion="full"]) .card:hover,
+  html:not([data-motion="full"]) .member-card:hover .member-photo img {
+    transform: none;
+  }
+}

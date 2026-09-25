@@ -1,688 +1,86 @@
-/* =====================================================
-   PROFESSIONAL PROJECTS PAGE
-===================================================== */
-
-document.addEventListener("DOMContentLoaded", () => {
-
-    const projectsContainer =
-        document.getElementById("allProjects");
-
-    const filterButtons =
-        document.querySelectorAll(".filter-btn");
-
-    const previewModal =
-        document.getElementById("livePreviewModal");
-
-    const totalProjectCountEl =
-        document.getElementById("totalProjectCount");
-
-    const visibleProjectCountEl =
-        document.getElementById("visibleProjectCount");
-
-
-    if (!projectsContainer) return;
-
-
-    /* =================================================
-       PROJECT DATA
-    ================================================= */
-
-    const projects =
-        typeof getAllProjects === "function"
-            ? getAllProjects()
-            : [];
-
-    if (totalProjectCountEl) {
-
-        totalProjectCountEl.textContent =
-            String(projects.length);
-
-    }
-
-
-    /* =================================================
-       RENDER PROJECTS
-    ================================================= */
-
-    function renderProjects(filter = "all") {
-
-        const filteredProjects =
-            filter === "all"
-                ? projects
-                : projects.filter(
-                    project =>
-                        project.filter === filter
-                );
-
-
-        if (visibleProjectCountEl) {
-
-            visibleProjectCountEl.textContent =
-                String(filteredProjects.length);
-
-        }
-
-
-        projectsContainer.innerHTML = "";
-
-
-        if (!filteredProjects.length) {
-
-            projectsContainer.innerHTML = `
-
-                <div class="projects-empty">
-
-                    <i class="fa-regular fa-folder-open"></i>
-
-                    <h3>
-                        More projects coming soon.
-                    </h3>
-
-                    <p>
-                        This category doesn't have a live
-                        project available yet.
-                    </p>
-
-                </div>
-
-            `;
-
-            return;
-
-        }
-
-
-        filteredProjects.forEach(
-            (project, index) => {
-
-                const card =
-                    document.createElement("article");
-
-                card.className =
-                    "professional-project-card";
-
-
-                const hasLiveWebsite =
-                    Boolean(
-                        project.link &&
-                        project.link !== "#"
-                    );
-
-
-                /* ================================
-                   LIVE PREVIEW
-                ================================= */
-
-                let previewHTML = "";
-
-
-                if (hasLiveWebsite) {
-
-                    previewHTML = `
-
-                        <div class="live-browser">
-
-                            <div class="live-browser-bar">
-
-                                <div
-                                    class="browser-dots"
-                                >
-                                    <span></span>
-                                    <span></span>
-                                    <span></span>
-                                </div>
-
-
-                                <div
-                                    class="browser-address"
-                                >
-
-                                    <i
-                                        class="fa-solid fa-lock"
-                                    ></i>
-
-                                    ${getDomain(
-                                        project.link
-                                    )}
-
-                                </div>
-
-
-                                <button
-                                    class="browser-open"
-                                    type="button"
-                                    data-open-live="${escapeAttribute(
-                                        project.link
-                                    )}"
-                                    title="Open live website"
-                                >
-
-                                    <i
-                                        class="fa-solid fa-arrow-up-right-from-square"
-                                    ></i>
-
-                                </button>
-
-                            </div>
-
-
-                            <div
-                                class="live-website-frame"
-                            >
-
-                                <iframe
-                                    src="${escapeAttribute(
-                                        project.link
-                                    )}"
-                                    title="${escapeAttribute(
-                                        project.name
-                                    )} live website preview"
-                                    loading="lazy"
-                                    referrerpolicy="strict-origin-when-cross-origin"
-                                    onload="this.classList.add('is-loaded')"
-                                    onerror="this.closest('.live-browser').innerHTML = '<div class=&quot;project-no-live&quot;><i class=&quot;fa-solid fa-triangle-exclamation&quot;></i><span>PREVIEW UNAVAILABLE</span><small>SITE COULDN&#039;T BE LOADED</small></div>'"
-                                ></iframe>
-
-
-                                <div
-                                    class="live-preview-hint"
-                                >
-
-                                    <i
-                                        class="fa-solid fa-hand-pointer"
-                                    ></i>
-
-                                    SCROLL TO EXPLORE
-
-                                </div>
-
-                            </div>
-
-                        </div>
-
-                    `;
-
-                } else {
-
-                    previewHTML = `
-
-                        <div
-                            class="project-no-live"
-                        >
-
-                            <i
-                                class="fa-solid fa-compass-drafting"
-                            ></i>
-
-                            <span>
-                                LIVE PREVIEW UNAVAILABLE
-                            </span>
-
-                            <small>
-                                PROJECT LINK COMING SOON
-                            </small>
-
-                        </div>
-
-                    `;
-
-                }
-
-
-                /* ================================
-                   TECH
-                ================================= */
-
-                const techHTML =
-                    (project.tech || [])
-                        .map(
-                            tech =>
-                                `<span>${escapeHTML(
-                                    tech
-                                )}</span>`
-                        )
-                        .join("");
-
-
-                /* ================================
-                   CARD
-                ================================= */
-
-                card.innerHTML = `
-
-                    <div class="professional-project-number">
-
-                        ${String(index + 1)
-                            .padStart(2, "0")}
-
-                    </div>
-
-
-                    ${previewHTML}
-
-
-                    <div class="professional-project-content">
-
-                        <div class="professional-project-meta">
-
-                            <span>
-                                ${escapeHTML(
-                                    project.category ||
-                                    "PROJECT"
-                                )}
-                            </span>
-
-
-                            <span
-                                class="project-live-status"
-                            >
-
-                                ${hasLiveWebsite
-                                    ? "● LIVE"
-                                    : "○ OFFLINE"}
-
-                            </span>
-
-                        </div>
-
-
-                        <h2>
-                            ${escapeHTML(
-                                project.name
-                            )}
-                        </h2>
-
-
-                        <p>
-                            ${escapeHTML(
-                                project.description ||
-                                ""
-                            )}
-                        </p>
-
-
-                        <div class="professional-project-tech">
-
-                            ${techHTML}
-
-                        </div>
-
-
-                        <div
-                            class="professional-project-bottom"
-                        >
-
-                            <div>
-
-                                <span
-                                    class="project-by"
-                                >
-                                    BUILT BY
-                                </span>
-
-                                <strong>
-                                    ${escapeHTML(
-                                        project.memberName
-                                    )}
-                                </strong>
-
-                            </div>
-
-
-                            <div
-                                class="professional-project-actions"
-                            >
-
-                                ${
-                                    hasLiveWebsite
-
-                                        ? `
-
-                                            <button
-                                                class="live-preview-button"
-                                                type="button"
-                                                data-preview="${escapeAttribute(
-                                                    project.link
-                                                )}"
-                                                data-title="${escapeAttribute(
-                                                    project.name
-                                                )}"
-                                            >
-
-                                                LIVE PREVIEW
-
-                                                <i
-                                                    class="fa-solid fa-expand"
-                                                ></i>
-
-                                            </button>
-
-
-                                            <a
-                                                href="${escapeAttribute(
-                                                    project.link
-                                                )}"
-                                                target="_blank"
-                                                rel="noopener noreferrer"
-                                                class="project-live-link"
-                                            >
-
-                                                OPEN LIVE
-
-                                                <i
-                                                    class="fa-solid fa-arrow-up-right"
-                                                ></i>
-
-                                            </a>
-
-                                        `
-
-                                        : `
-
-                                            <span
-                                                class="project-coming-soon"
-                                            >
-                                                DETAILS COMING SOON
-                                            </span>
-
-                                        `
-
-                                }
-
-                            </div>
-
-                        </div>
-
-                    </div>
-
-                `;
-
-
-                projectsContainer.appendChild(card);
-
-            }
-        );
-
-
-        attachProjectActions();
-
-    }
-
-
-    /* =================================================
-       LIVE PREVIEW ACTIONS
-    ================================================= */
-
-    function attachProjectActions() {
-
-        document
-            .querySelectorAll(
-                "[data-preview]"
-            )
-            .forEach(button => {
-
-                button.addEventListener(
-                    "click",
-                    () => {
-
-                        openLivePreview(
-                            button.dataset.preview,
-                            button.dataset.title
-                        );
-
-                    }
-                );
-
-            });
-
-
-        document
-            .querySelectorAll(
-                "[data-open-live]"
-            )
-            .forEach(button => {
-
-                button.addEventListener(
-                    "click",
-                    () => {
-
-                        window.open(
-                            button.dataset.openLive,
-                            "_blank",
-                            "noopener,noreferrer"
-                        );
-
-                    }
-                );
-
-            });
-
-    }
-
-
-    /* =================================================
-       FULLSCREEN LIVE PREVIEW
-    ================================================= */
-
-    function openLivePreview(
-        url,
-        title
-    ) {
-
-        if (!previewModal) {
-
-            window.open(
-                url,
-                "_blank",
-                "noopener,noreferrer"
-            );
-
-            return;
-
-        }
-
-
-        const frame =
-            previewModal.querySelector(
-                "#livePreviewFrame"
-            );
-
-        const titleElement =
-            previewModal.querySelector(
-                "#livePreviewTitle"
-            );
-
-
-        if (frame) {
-
-            frame.src = url;
-
-        }
-
-
-        if (titleElement) {
-
-            titleElement.textContent =
-                title;
-
-        }
-
-
-        previewModal.classList.add(
-            "active"
-        );
-
-        document.body.classList.add(
-            "preview-open"
-        );
-
-    }
-
-
-    /* =================================================
-       CLOSE PREVIEW
-    ================================================= */
-
-    function closeLivePreview() {
-
-        if (!previewModal) return;
-
-
-        previewModal.classList.remove(
-            "active"
-        );
-
-        document.body.classList.remove(
-            "preview-open"
-        );
-
-
-        const frame =
-            previewModal.querySelector(
-                "#livePreviewFrame"
-            );
-
-
-        if (frame) {
-
-            frame.src =
-                "about:blank";
-
-        }
-
-    }
-
-
-    if (previewModal) {
-
-        const closeButton =
-            previewModal.querySelector(
-                "#livePreviewClose"
-            );
-
-
-        if (closeButton) {
-
-            closeButton.addEventListener(
-                "click",
-                closeLivePreview
-            );
-
-        }
-
-
-        previewModal
-            .querySelector(
-                ".live-preview-backdrop"
-            )
-            ?.addEventListener(
-                "click",
-                closeLivePreview
-            );
-
-    }
-
-
-    document.addEventListener(
-        "keydown",
-        event => {
-
-            if (
-                event.key === "Escape" &&
-                previewModal?.classList.contains(
-                    "active"
-                )
-            ) {
-
-                closeLivePreview();
-
-            }
-
-        }
-    );
-
-
-    /* =================================================
-       FILTERS
-    ================================================= */
-
-    filterButtons.forEach(button => {
-
-        button.addEventListener(
-            "click",
-            () => {
-
-                filterButtons.forEach(
-                    item =>
-                        item.classList.remove(
-                            "active"
-                        )
-                );
-
-
-                button.classList.add(
-                    "active"
-                );
-
-
-                renderProjects(
-                    button.dataset.filter ||
-                    "all"
-                );
-
-            }
-        );
-
+import { projects, membersForProject, getProject, teamMembers } from "./data.js";
+import { escapeHtml } from "./dom.js";
+import { openModal } from "./modal.js";
+import { rememberProject } from "./storage.js";
+
+const safeUrl = (value) => {
+  try { const url = new URL(value); return ["https:", "http:"].includes(url.protocol) ? url.href : ""; }
+  catch { return ""; }
+};
+
+function cardHtml(project) {
+  const personNames = membersForProject(project).map((member) => member.name).join(", ") || "Team project";
+  const image = project.images?.[0];
+  const media = image
+    ? `<img src="${escapeHtml(image)}" alt="${escapeHtml(project.name)} project image" loading="lazy">`
+    : `<div class="project-placeholder" aria-hidden="true">${escapeHtml(project.name.slice(0, 2))}</div>`;
+  return `<article class="card project-card" data-reveal>
+    <div class="project-media">${media}</div><div class="project-body">
+      <div class="project-meta"><span>${escapeHtml(project.category)}</span><span>${escapeHtml(project.status)}</span></div>
+      <h3>${escapeHtml(project.name)}</h3><p>${escapeHtml(project.description)}</p>
+      <p class="section-lead">${escapeHtml(personNames)}</p>
+      <button class="btn btn-secondary" type="button" data-open-project="${escapeHtml(project.id)}">Project details</button>
+    </div></article>`;
+}
+
+function detailHtml(project) {
+  const owners = membersForProject(project).map((member) => member.name).join(", ") || "Not listed";
+  const live = safeUrl(project.live);
+  const image = project.images?.[0];
+  const preview = live
+    ? `<section class="live-preview" aria-label="Live website preview">
+        <div class="browser-bar"><span class="browser-dots" aria-hidden="true">● ● ●</span><span class="browser-address">${escapeHtml(new URL(live).host)}</span></div>
+        <iframe title="${escapeHtml(project.name)} live website" src="${escapeHtml(live)}" loading="lazy" referrerpolicy="no-referrer" sandbox="allow-forms allow-scripts allow-same-origin allow-popups" ></iframe>
+        <p class="preview-note">If this site does not appear, its owner may block embedded previews. <a href="${escapeHtml(live)}" target="_blank" rel="noopener noreferrer">Open live website ↗</a></p>
+      </section>`
+    : `<p class="preview-note">Live preview unavailable.</p>`;
+  const tech = (project.tech || []).length ? `<h3>Technologies</h3><div class="chip-row">${project.tech.map((item) => `<span class="badge">${escapeHtml(item)}</span>`).join("")}</div>` : "";
+  return `<p class="eyebrow">${escapeHtml(project.category)} · ${escapeHtml(project.status)}</p>
+    <h2>${escapeHtml(project.name)}</h2>${image ? `<img class="project-detail-image" src="${escapeHtml(image)}" alt="${escapeHtml(project.name)} project image" loading="lazy">` : ""}<p class="section-lead">${escapeHtml(project.overview || project.description)}</p>
+    <p><strong>Team:</strong> ${escapeHtml(owners)}</p>${tech}${preview}
+    <div class="hero-actions">${live ? `<a class="btn btn-primary" href="${escapeHtml(live)}" target="_blank" rel="noopener noreferrer">Open live website</a>` : ""}${project.repo ? `<a class="btn btn-secondary" href="${escapeHtml(safeUrl(project.repo))}" target="_blank" rel="noopener noreferrer">GitHub</a>` : ""}</div>`;
+}
+
+export function openProject(id) {
+  const project = getProject(id);
+  if (!project) return;
+  rememberProject(id);
+  openModal({ title: project.name, html: detailHtml(project), wide: true });
+}
+
+export function initProjects() {
+  const home = document.getElementById("homeProjects");
+  const all = document.getElementById("allProjects");
+  const count = document.getElementById("projectCount");
+  if (home) home.innerHTML = projects.filter((project) => project.featured).map(cardHtml).join("");
+  if (!all) return;
+
+  const search = document.getElementById("projectSearch");
+  const category = document.getElementById("projectCategory");
+  const member = document.getElementById("projectMember");
+  const status = document.getElementById("projectStatus");
+  if (member) member.innerHTML += teamMembers.map((person) => `<option value="${escapeHtml(person.id)}">${escapeHtml(person.name)}</option>`).join("");
+
+  function render() {
+    const query = (search?.value || "").trim().toLocaleLowerCase();
+    const list = projects.filter((project) => {
+      const people = membersForProject(project);
+      const searchable = [project.name, project.description, project.category, project.status, ...(project.tech || []), ...people.map((person) => person.name)].join(" ").toLocaleLowerCase();
+      return (!query || searchable.includes(query))
+        && (!category?.value || (project.filters || [project.filter]).includes(category.value))
+        && (!member?.value || (project.memberIds || []).includes(member.value))
+        && (!status?.value || project.status.toLowerCase() === status.value.toLowerCase());
     });
-
-
-    /* =================================================
-       HELPERS
-    ================================================= */
-
-    function getDomain(url) {
-
-        try {
-
-            return new URL(url)
-                .hostname
-                .replace(
-                    /^www\./,
-                    ""
-                );
-
-        } catch {
-
-            return "LIVE WEBSITE";
-
-        }
-
-    }
-
-
-    function escapeHTML(value) {
-
-        return String(value)
-            .replaceAll("&", "&amp;")
-            .replaceAll("<", "&lt;")
-            .replaceAll(">", "&gt;")
-            .replaceAll('"', "&quot;")
-            .replaceAll("'", "&#039;");
-
-    }
-
-
-    function escapeAttribute(value) {
-
-        return escapeHTML(value);
-
-    }
-
-
-    /* =================================================
-       INITIALIZE
-    ================================================= */
-
-    renderProjects("all");
-
-});
+    if (count) count.textContent = String(list.length);
+    all.innerHTML = list.length ? list.map(cardHtml).join("") : `<div class="empty-state"><h3>No projects found.</h3><p>Try changing your search or filters.</p></div>`;
+  }
+  [search, category, member, status].filter(Boolean).forEach((control) => {
+    control.addEventListener("input", render);
+    if (control !== search) control.addEventListener("change", render);
+  });
+  all.addEventListener("click", (event) => {
+    const button = event.target.closest("[data-open-project]");
+    if (button) openProject(button.dataset.openProject);
+  });
+  render();
+}

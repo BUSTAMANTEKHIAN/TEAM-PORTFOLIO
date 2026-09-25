@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Page not found — DEV_STUDIO</title>
+  <meta name="robots" content="noindex">
+  <meta name="theme-color" content="#f3f1eb">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&family=Fraunces:ital,opsz,wght@0,9..144,500;1,9..144,500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/pages.css">
+  <script>
+    (function () {
+      try {
+        var pref = localStorage.getItem("ds_theme") || "system";
+        var dark = pref === "dark" || (pref !== "light" && window.matchMedia("(prefers-color-scheme: dark)").matches);
+        document.documentElement.dataset.theme = dark ? "dark" : "light";
+      } catch (e) {}
+    })();
+  </script>
+</head>
+<body>
+  <header class="site-header" id="siteHeader">
+    <div class="container nav-bar">
+      <a class="logo" href="index.html">
+        <span class="logo-mark">&lt;/&gt;</span>
+        <span class="logo-text">DEV_STUDIO<small>Team Portfolio</small></span>
+      </a>
+      <a class="btn btn-secondary" href="index.html">Home</a>
+    </div>
+  </header>
+  <main class="error-page">
+    <div>
+      <p class="section-kicker">Error</p>
+      <h1>404</h1>
+      <p class="section-lead" style="margin:16px auto 28px">This page is not in the studio archive.</p>
+      <div class="hero-actions" style="justify-content:center">
+        <a class="btn btn-primary" href="index.html">Return Home</a>
+        <a class="btn btn-secondary" href="projects.html">View Projects</a>
+      </div>
+    </div>
+  </main>
+</body>
+</html>

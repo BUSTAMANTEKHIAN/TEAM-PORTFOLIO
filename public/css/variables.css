@@ -1,0 +1,88 @@
+:root {
+  --background: #f3f1eb;
+  --surface: #fffcf8;
+  --surface-secondary: #e8e4da;
+  --text-primary: #14130f;
+  --text-secondary: #4d4a43;
+  --text-muted: #7a766c;
+  --border: rgba(20, 19, 15, 0.1);
+  --border-strong: rgba(20, 19, 15, 0.16);
+  --accent: #1e4d3c;
+  --accent-hover: #16382c;
+  --accent-soft: rgba(30, 77, 60, 0.08);
+  --success: #2c6b4a;
+  --warning: #8a6418;
+  --danger: #9b2c2c;
+  --glow: rgba(30, 77, 60, 0.18);
+  --shadow: 0 16px 40px rgba(20, 19, 15, 0.08);
+  --shadow-sm: 0 8px 20px rgba(20, 19, 15, 0.06);
+  --overlay: rgba(20, 19, 15, 0.48);
+  --nav-bg: rgba(243, 241, 235, 0.78);
+  --grid-line: rgba(20, 19, 15, 0.06);
+  --hero-mesh-a: rgba(30, 77, 60, 0.12);
+  --hero-mesh-b: rgba(197, 217, 138, 0.18);
+
+  --font-display: "Fraunces", "Times New Roman", serif;
+  --font-sans: "Figtree", "Segoe UI", sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, monospace;
+
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 48px;
+  --space-8: 64px;
+  --space-9: 96px;
+  --space-10: 128px;
+
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 22px;
+  --radius-xl: 32px;
+  --radius-full: 999px;
+
+  --nav-h: 72px;
+  --container: 1180px;
+  --container-wide: 1280px;
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --t-fast: 160ms;
+  --t-med: 260ms;
+  --t-slow: 480ms;
+  --focus: 0 0 0 3px var(--background), 0 0 0 5px var(--accent);
+}
+
+html[data-theme="dark"] {
+  --background: #0c0d0b;
+  --surface: #151613;
+  --surface-secondary: #1d1f1a;
+  --text-primary: #f3f0e7;
+  --text-secondary: #b8b4a8;
+  --text-muted: #8a877c;
+  --border: rgba(243, 240, 231, 0.1);
+  --border-strong: rgba(243, 240, 231, 0.16);
+  --accent: #c5d98a;
+  --accent-hover: #d7e7a8;
+  --accent-soft: rgba(197, 217, 138, 0.1);
+  --success: #7dba8a;
+  --warning: #e0b45c;
+  --danger: #e07070;
+  --glow: rgba(197, 217, 138, 0.14);
+  --shadow: 0 18px 44px rgba(0, 0, 0, 0.38);
+  --shadow-sm: 0 10px 24px rgba(0, 0, 0, 0.28);
+  --overlay: rgba(0, 0, 0, 0.62);
+  --nav-bg: rgba(12, 13, 11, 0.78);
+  --grid-line: rgba(243, 240, 231, 0.05);
+  --hero-mesh-a: rgba(197, 217, 138, 0.1);
+  --hero-mesh-b: rgba(30, 77, 60, 0.28);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html:not([data-motion="full"]) {
+    --t-fast: 1ms;
+    --t-med: 1ms;
+    --t-slow: 1ms;
+  }
+}
